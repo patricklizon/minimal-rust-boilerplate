@@ -21,15 +21,7 @@ devbox shell
 
 Devbox provides `rustup` via `rustup@latest`, with its resolved package recorded in `devbox.lock`. Rust itself is managed by `rustup`: `rust-toolchain.toml` pins **Rust 1.90.0** with the `minimal` profile plus `rustfmt` and `clippy`. The package uses Rust edition **2024**.
 
-### Initialization hook
-
-The `shell.init_hook` in `devbox.json` runs when Devbox initializes the environment, including before running its scripts:
-
-```sh
-rustup default stable
-```
-
-This installs the stable toolchain if needed and sets it as rustup's default. It changes the default for the active rustup installation, so it can affect other projects that have no toolchain override. Inside this project, `rust-toolchain.toml` takes precedence: Cargo uses Rust **1.90.0**, and rustup installs that toolchain and its configured components when needed. The hook does not update the project's pinned version.
+When you run Cargo inside this project, rustup selects Rust **1.90.0** from `rust-toolchain.toml` and installs that toolchain and its configured components if needed. Entering the Devbox environment does not change rustup's default toolchain.
 
 Run the project:
 
@@ -53,7 +45,7 @@ This project already includes a Devbox-generated `.envrc`. From the project dire
 direnv allow
 ```
 
-direnv loads the Devbox environment when you enter the directory and unloads its environment variables when you leave. You can run Cargo commands directly once it is loaded. The init hook still runs during environment initialization; its change to rustup's default persists after you leave.
+direnv loads the Devbox environment when you enter the directory and unloads its environment variables when you leave. You can run Cargo commands directly once it is loaded.
 
 If `.envrc` is missing, generate it with:
 
