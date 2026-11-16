@@ -19,9 +19,9 @@ Without direnv, start the development environment manually:
 devbox shell
 ```
 
-Devbox provides `rustup` via `rustup@latest`, with its resolved package recorded in `devbox.lock`. Rust itself is managed by `rustup`: `rust-toolchain.toml` pins **Rust 1.90.0** with the `minimal` profile plus `rustfmt` and `clippy`. The package uses Rust edition **2024**.
+Devbox provides `rustup` via `rustup@latest`, with its resolved package recorded in `devbox.lock`. Rust itself is managed by `rustup`: `rust-toolchain.toml` pins **Rust 1.100.0** with the `minimal` profile plus `rustfmt` and `clippy`. The package uses Rust edition **2024**.
 
-When you run Cargo inside this project, rustup selects Rust **1.90.0** from `rust-toolchain.toml` and installs that toolchain and its configured components if needed. Entering the Devbox environment does not change rustup's default toolchain.
+When you run Cargo inside this project, rustup selects Rust **1.100.0** from `rust-toolchain.toml` and installs that toolchain and its configured components if needed. Entering the Devbox environment does not change rustup's default toolchain.
 
 Run the project:
 
